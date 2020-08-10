@@ -1,30 +1,26 @@
 import dom from "./util/dom.js";
-import NavBar from "./views/components/NavBar.js";
+import Header from "./views/components/Header.js";
+import Footer from "./views/components/Footer.js";
 import Home from "./views/pages/Home.js";
+import About from "./views/pages/About.js";
+
 export default class App {
   $target = null;
   $header = null;
-  $content = null;
+  $pages = null;
   $footer = null;
 
   constructor($target) {
     this.$target = $target;
-    this.$header = dom.creatAndAppendChild("header", this.$target, {
-      className: "header-container"
+    this.$header = new Header({ $target });
+    this.$pages = dom.creatAndAppendChild("section", this.$target, {
+      className: "pages"
     });
-    this.$content = dom.creatAndAppendChild("section", this.$target, {
-      className: "content-container"
-    });
-    this.$footer = dom.creatAndAppendChild("footer", this.$target, {
-      className: "footer-container"
-    });
-
+    this.$footer = new Footer({ $target });
     this.render();
   }
 
   render() {
-    const $NavBar = new NavBar({ $target: this.$header });
-
-    const $Home = new Home();
+    const $Home = new Home({ $target: this.$pages });
   }
 }
