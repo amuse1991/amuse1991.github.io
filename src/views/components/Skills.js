@@ -9,27 +9,52 @@ export default class Skills {
       {
         title: "javascript",
         level: 4,
-        logo: "js-logo.png"
+        logo: "js-logo.png",
+        descriptions: [
+          "Lorem ipsum dolor sit amet consectetur adipisicing elit. Repudiandae asperiores dolorum maiores accusantium aut excepturi sit quibusdam nemo facilis voluptatum esse ratione, deserunt molestias vero quae, quas neque pariatur natus!",
+          "Lorem ipsum dolor sit amet consectetur adipisicing elit. Repudiandae asperiores dolorum maiores accusantium aut excepturi sit quibusdam nemo facilis voluptatum esse ratione, deserunt molestias vero quae, quas neque pariatur natus!",
+          "Lorem ipsum dolor sit amet consectetur adipisicing elit. Repudiandae asperiores dolorum maiores accusantium aut excepturi sit quibusdam nemo facilis voluptatum esse ratione, deserunt molestias vero quae, quas neque pariatur natus!"
+        ]
       },
       {
         title: "css",
         level: 3,
-        logo: "css-logo.png"
+        logo: "css-logo.png",
+        descriptions: [
+          "Lorem ipsum dolor sit amet consectetur adipisicing elit. Repudiandae asperiores dolorum maiores accusantium aut excepturi sit quibusdam nemo facilis voluptatum esse ratione, deserunt molestias vero quae, quas neque pariatur natus!",
+          "Lorem ipsum dolor sit amet consectetur adipisicing elit. Repudiandae asperiores dolorum maiores accusantium aut excepturi sit quibusdam nemo facilis voluptatum esse ratione, deserunt molestias vero quae, quas neque pariatur natus!",
+          "Lorem ipsum dolor sit amet consectetur adipisicing elit. Repudiandae asperiores dolorum maiores accusantium aut excepturi sit quibusdam nemo facilis voluptatum esse ratione, deserunt molestias vero quae, quas neque pariatur natus!"
+        ]
       },
       {
         title: "react",
         level: 3,
-        logo: "react-logo.png"
+        logo: "react-logo.png",
+        descriptions: [
+          "Lorem ipsum dolor sit amet consectetur adipisicing elit. Repudiandae asperiores dolorum maiores accusantium aut excepturi sit quibusdam nemo facilis voluptatum esse ratione, deserunt molestias vero quae, quas neque pariatur natus!",
+          "Lorem ipsum dolor sit amet consectetur adipisicing elit. Repudiandae asperiores dolorum maiores accusantium aut excepturi sit quibusdam nemo facilis voluptatum esse ratione, deserunt molestias vero quae, quas neque pariatur natus!",
+          "Lorem ipsum dolor sit amet consectetur adipisicing elit. Repudiandae asperiores dolorum maiores accusantium aut excepturi sit quibusdam nemo facilis voluptatum esse ratione, deserunt molestias vero quae, quas neque pariatur natus!"
+        ]
       },
       {
         title: "node",
         level: 2,
-        logo: "node-logo.png"
+        logo: "node-logo.png",
+        descriptions: [
+          "1",
+          "Lorem ipsum dolor sit amet consectetur adipisicing elit. Repudiandae asperiores dolorum maiores accusantium aut excepturi sit quibusdam nemo facilis voluptatum esse ratione, deserunt molestias vero quae, quas neque pariatur natus!",
+          "Lorem ipsum dolor sit amet consectetur adipisicing elit. Repudiandae asperiores dolorum maiores accusantium aut excepturi sit quibusdam nemo facilis voluptatum esse ratione, deserunt molestias vero quae, quas neque pariatur natus!"
+        ]
       },
       {
         title: "aws",
         level: 2,
-        logo: "aws-logo.png"
+        logo: "aws-logo.png",
+        descriptions: [
+          "Lorem ipsum dolor sit amet consectetur adipisicing elit. Repudiandae asperiores dolorum maiores accusantium aut excepturi sit quibusdam nemo facilis voluptatum esse ratione, deserunt molestias vero quae, quas neque pariatur natus!",
+          "Lorem ipsum dolor sit amet consectetur adipisicing elit. Repudiandae asperiores dolorum maiores accusantium aut excepturi sit quibusdam nemo facilis voluptatum esse ratione, deserunt molestias vero quae, quas neque pariatur natus!",
+          "Lorem ipsum dolor sit amet consectetur adipisicing elit. Repudiandae asperiores dolorum maiores accusantium aut excepturi sit quibusdam nemo facilis voluptatum esse ratione, deserunt molestias vero quae, quas neque pariatur natus!"
+        ]
       }
     ]
   };
@@ -45,10 +70,29 @@ export default class Skills {
     this.$chart.setAttribute("class", "skills__chart");
     this.$skills.appendChild(this.$chart);
 
-    this.$chartDesc = document.createElement("ul");
+    this.$chartDesc = document.createElement("article");
     this.$chartDesc.setAttribute("class", "chart__description");
     this.$skills.appendChild(this.$chartDesc);
 
+    this.$chart.addEventListener("click", () => {
+      const title = event.target.dataset.title;
+      if (!title) return;
+      const data = this.dataset.list.find(data => data.title === title) || {
+        descriptions: ["no data"]
+      };
+      this.$chartDesc.innerHTML = `
+      <img class="chart__desc__img" src="static/${data.logo}" alt="${
+        data.title
+      } logo">
+      <ul>
+          ${data.descriptions
+            .map(desc => {
+              return `<li>${desc}</li>`;
+            })
+            .join("")}
+        </ul>
+      `;
+    });
     this.render();
   }
 
@@ -58,14 +102,14 @@ export default class Skills {
       .map(li => {
         const { title, level, logo } = li;
         return `
-        <section class="chart__item-container">
+        <section class="chart__item-container" data-title='${title}'>
         <figure class="chart__header">
           <img class="chart__header__logo" src="static/${logo}" alt="${title} logo" />
           <figcaption class="chart__header__caption">${title}</figcaption>
         </figure>
         <ul class="chart__items">
         ${Array.from({ length: Number(level) }, (v, i) => {
-          return `<li class="chart__item--filled" data-theme='${title}'>${
+          return `<li class="chart__item--filled" data-title='${title}'>${
             i === 0 ? `LEVEL : ${level}` : ""
           }</li>`;
         }).join("")}

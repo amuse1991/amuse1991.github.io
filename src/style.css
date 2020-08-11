@@ -130,6 +130,7 @@ h5 {
   display: flex;
   flex-flow: column wrap;
   align-items: center;
+  z-index: -1;
 }
 
 .chart__header__logo {
@@ -152,19 +153,29 @@ h5 {
   align-items: center;
 }
 
-.chart__item--filled[data-theme="javascript"] {
+.chart__item--filled[data-title="javascript"] {
   background-color: var(--js-theme-color);
 }
 
-.chart__item--filled[data-theme="css"] {
+.chart__item--filled[data-title="css"] {
   background-color: var(--css-theme-color);
 }
-.chart__item--filled[data-theme="react"] {
+.chart__item--filled[data-title="react"] {
   background-color: var(--react-theme-color);
 }
-.chart__item--filled[data-theme="node"] {
+.chart__item--filled[data-title="node"] {
   background-color: var(--node-theme-color);
 }
-.chart__item--filled[data-theme="aws"] {
+.chart__item--filled[data-title="aws"] {
   background-color: var(--aws-theme-color);
+}
+
+.chart__description {
+  display: grid;
+  grid-template-columns: 15% auto;
+  align-items: center;
+}
+
+.chart__desc__img {
+  width: 100%;
 }
