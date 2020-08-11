@@ -3,6 +3,7 @@ import Header from "./views/components/Header.js";
 import Footer from "./views/components/Footer.js";
 import Home from "./views/pages/Home.js";
 import About from "./views/pages/About.js";
+import Project from "./views/pages/Projects.js";
 
 export default class App {
   $target = null;
@@ -23,5 +24,6 @@ export default class App {
   render() {
     const $Home = new Home({ $target: this.$pages });
     const $About = new About({ $target: this.$pages });
+    const $project = new Project({ $target: this.$pages });
   }
 }

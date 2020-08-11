@@ -1,7 +1,4 @@
 :root {
-  --content-padding: 10px;
-  --content-margin: 20px;
-
   --js-theme-color: #f7df1e;
   --css-theme-color: #1572b6;
   --node-theme-color: #90c53f;
@@ -178,9 +175,6 @@ h5 {
   background-color: var(--aws-theme-color);
 }
 
-.chart__item--filled:hover {
-}
-
 .chart__description {
   display: grid;
   grid-template-columns: 15% auto;
@@ -189,4 +183,53 @@ h5 {
 
 .chart__desc__img {
   width: 100%;
+}
+
+/* project */
+
+/* project__card-list */
+.card-list {
+  display: flex;
+  flex-flow: column wrap;
+  justify-content: space-between;
+  align-content: center;
+}
+
+/* project__card */
+.card {
+  display: flex;
+  flex-flow: column wrap;
+  align-items: center;
+  border: 1px solid rgba(0, 0, 0, 0.125);
+  border-radius: 0.25rem;
+  margin-bottom: 1rem;
+}
+
+.card__tag-group {
+  padding-left: 0;
+}
+
+.card__tag {
+  list-style: none;
+  display: inline-block;
+  margin: 5px;
+}
+
+.card__thumb {
+  width: 100%;
+}
+
+@media screen and (min-width: 630px) {
+  .card-list {
+    display: flex;
+    flex-flow: row wrap;
+  }
+
+  .card {
+    width: 32%;
+  }
+  /* 
+  .card:nth-child(3n + 2) {
+    margin-left: 8px;
+  } */
 }
