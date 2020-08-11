@@ -4,9 +4,11 @@ export default class CardList {
   $target = null;
   $cardList = null;
   cards = null;
+  dataset = null;
 
   constructor({ $target, dataset }) {
     this.$target = $target;
+    this.dataset = dataset;
 
     this.$cardList = document.createElement("section");
     this.$cardList.setAttribute("class", "card-list");

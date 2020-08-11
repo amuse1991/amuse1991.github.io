@@ -9,13 +9,12 @@ export default class Card {
     this.$card.setAttribute("class", "card");
     this.$target.appendChild(this.$card);
     this.data = data;
-    console.log(data);
 
     this.render();
   }
 
   render() {
-    const { title, tags, titleDesc, thumbFileName } = this.data;
+    const { projectId, title, tags, titleDesc, thumbFileName } = this.data;
     this.$card.innerHTML = `
       <h2 class="card__title">${title}</h2>
       <img class="card__thumb" src="static/${thumbFileName}" alt="${title} thumbnail">
@@ -23,7 +22,7 @@ export default class Card {
         ${tags.map(tag => `<li class="card__tag">${tag}</li>`).join("")}
       </ul>
       <p class="">${titleDesc}</p>
-      <button type="button" class="card__button">learn more</button>
+      <button type="button" class="card__button" data-project-id="${projectId}" data-action="modal-open">learn more</button>
     `;
   }
 }
