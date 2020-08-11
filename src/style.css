@@ -1,6 +1,12 @@
 :root {
   --content-padding: 10px;
   --content-margin: 20px;
+
+  --js-theme-color: #f7df1e;
+  --css-theme-color: #1572b6;
+  --node-theme-color: #90c53f;
+  --aws-theme-color: #f7981f;
+  --react-theme-color: #00d8ff;
 }
 
 #App {
@@ -79,4 +85,86 @@ h5 {
   width: fit-content;
   text-decoration: none;
   text-transform: capitalize;
+}
+
+.personality__item {
+  display: grid;
+  grid-template-columns: 2.5em 1fr;
+  align-items: center;
+  margin: 0;
+}
+
+.personality__caption {
+  text-transform: capitalize;
+  margin-left: 1em;
+  font-size: larger;
+  font-weight: 600;
+}
+
+.personality__description {
+  grid-column: 1 / span 2;
+  grid-row: 2;
+  margin: 10px 0;
+}
+
+.personality__img {
+  width: 100%;
+}
+
+/* skills */
+.skills__chart {
+  display: flex;
+  flex-flow: column;
+}
+
+.chart__item-container {
+  display: grid;
+  grid-template-columns: minmax(16px, 10%) minmax(16px, auto);
+}
+
+.chart__item-container > figure {
+  margin: 0;
+}
+
+.chart__header {
+  display: flex;
+  flex-flow: column wrap;
+  align-items: center;
+}
+
+.chart__header__logo {
+  width: 60%;
+}
+
+.chart__items {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  text-align: center;
+  padding-left: 10px;
+  margin: 5px;
+}
+
+.chart__items > li {
+  list-style-type: none;
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: stretch;
+  align-items: center;
+}
+
+.chart__item--filled[data-theme="javascript"] {
+  background-color: var(--js-theme-color);
+}
+
+.chart__item--filled[data-theme="css"] {
+  background-color: var(--css-theme-color);
+}
+.chart__item--filled[data-theme="react"] {
+  background-color: var(--react-theme-color);
+}
+.chart__item--filled[data-theme="node"] {
+  background-color: var(--node-theme-color);
+}
+.chart__item--filled[data-theme="aws"] {
+  background-color: var(--aws-theme-color);
 }

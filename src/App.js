@@ -22,5 +22,6 @@ export default class App {
 
   render() {
     const $Home = new Home({ $target: this.$pages });
+    const $About = new About({ $target: this.$pages });
   }
 }
