@@ -27,7 +27,7 @@ export default class Skills {
         ]
       },
       {
-        title: "react",
+        title: "react.js",
         level: 3,
         logo: "react-logo.png",
         descriptions: [
@@ -37,7 +37,7 @@ export default class Skills {
         ]
       },
       {
-        title: "node",
+        title: "node.js",
         level: 2,
         logo: "node-logo.png",
         descriptions: [
@@ -105,12 +105,11 @@ export default class Skills {
         <section class="chart__item-container" data-title='${title}'>
         <figure class="chart__header">
           <img class="chart__header__logo" src="static/${logo}" alt="${title} logo" />
-          <figcaption class="chart__header__caption">${title}</figcaption>
         </figure>
         <ul class="chart__items">
         ${Array.from({ length: Number(level) }, (v, i) => {
           return `<li class="chart__item--filled" data-title='${title}'>${
-            i === 0 ? `LEVEL : ${level}` : ""
+            i === 0 ? `${title.toUpperCase()}<br>level ${level}` : ""
           }</li>`;
         }).join("")}
         </ul>

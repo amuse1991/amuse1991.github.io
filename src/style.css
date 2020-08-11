@@ -120,6 +120,7 @@ h5 {
 .chart__item-container {
   display: grid;
   grid-template-columns: minmax(16px, 10%) minmax(16px, auto);
+  align-items: center;
 }
 
 .chart__item-container > figure {
@@ -141,8 +142,8 @@ h5 {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   text-align: center;
-  padding-left: 10px;
-  margin: 5px;
+  padding-left: 0px;
+  /* margin: 5px; */
 }
 
 .chart__items > li {
@@ -153,6 +154,13 @@ h5 {
   align-items: center;
 }
 
+.chart__item--filled {
+  padding-left: 20px;
+  font-size: x-large;
+  font-weight: 900;
+  color: white;
+  text-align: start;
+}
 .chart__item--filled[data-title="javascript"] {
   background-color: var(--js-theme-color);
 }
@@ -160,14 +168,17 @@ h5 {
 .chart__item--filled[data-title="css"] {
   background-color: var(--css-theme-color);
 }
-.chart__item--filled[data-title="react"] {
+.chart__item--filled[data-title="react.js"] {
   background-color: var(--react-theme-color);
 }
-.chart__item--filled[data-title="node"] {
+.chart__item--filled[data-title="node.js"] {
   background-color: var(--node-theme-color);
 }
 .chart__item--filled[data-title="aws"] {
   background-color: var(--aws-theme-color);
+}
+
+.chart__item--filled:hover {
 }
 
 .chart__description {
